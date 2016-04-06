@@ -8,4 +8,4 @@ COPY in    /opt/resource/in
 COPY check /opt/resource/check
 COPY out   /opt/resource/out
 
-RUN chmod +x /usr/local/bin/jq /opt/resource/*
+RUN chmod a+rx,go-w /usr/local/bin/jq /opt/resource/*
