@@ -1,2 +1,2 @@
 #!/bin/sh
-echo '{"version":"none"}'
+echo '{"version":{"ami":"none"},"metadata":[]}'
