@@ -1,2 +1,9 @@
 #!/bin/sh
-cat
+IMAGE_ID=$(aws ec2 describe-images \
+  --filters \
+    'Name=owner-id,Values=099720109477' \
+    'Name=is-public,Values=true' \
+    'Name=state,Values=available' \
+    'Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-trusty-*server*' \
+  --query 'sort_by(Images, &CreationDate)[-1].ImageId')
+echo "[{\"ami\": \"$IMAGE_ID\"}]"
