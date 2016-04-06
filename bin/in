@@ -1,2 +1,2 @@
 #!/bin/sh
-echo '{"version":{"ami":"none"},"metadata":[]}'
+jq -c '{version: .version}' < /dev/stdin
