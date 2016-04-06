@@ -2,7 +2,7 @@ FROM python:3-alpine
 
 ADD http://stedolan.github.io/jq/download/linux64/jq /usr/local/bin/jq
 
-RUN pip install awscli
+RUN pip --no-cache-dir install awscli
 
 COPY in    /opt/resource/in
 COPY check /opt/resource/check
