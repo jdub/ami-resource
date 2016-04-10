@@ -4,13 +4,13 @@ A Concourse CI resource to check for new Amazon Machine Images (AMI).
 
 ### Source Configuration
 
-- `aws_access_key_id` *Required.* Your AWS access key ID.
+- `aws_access_key_id`: *Required.* Your AWS access key ID.
 
-- `aws_secret_access_key` *Required.* Your AWS secret access key.
+- `aws_secret_access_key`: *Required.* Your AWS secret access key.
 
-- `region` *Required.* The AWS region to search for AMIs.
+- `region`: *Required.* The AWS region to search for AMIs.
 
-- `filters` *Required.* A map of named filters to their values. See `aws ec2 describe-images help` under `--filters` for acceptable filters and values.
+- `filters`: *Required.* A map of named filters to their values. See `aws ec2 describe-images help` under `--filters` for acceptable filters and values.
 
 ### Example
 
