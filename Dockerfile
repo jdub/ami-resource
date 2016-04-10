@@ -1,6 +1,6 @@
-FROM python:3-alpine
+FROM alpine:latest
 
-RUN apk --no-cache add jq
+RUN apk --no-cache add py-pip jq
 
 RUN pip --no-cache-dir install awscli
 
