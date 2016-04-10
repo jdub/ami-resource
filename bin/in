@@ -10,4 +10,6 @@ export AWS_DEFAULT_REGION=$(jq -r .source.region < /tmp/input)
 
 aws ec2 describe-images --image-ids "$AMI" --query 'Images[0]' \
   | tee "$DEST/object.json" \
-  | jq '.ImageId' > "$DEST/id"
+  | jq -r '.ImageId' > "$DEST/id"
+
+jq -M '.ImageId as $image | {Name, CreationDate} | to_entries | {metadata: map({name:.key, value:.value}), version: {ami: $image}}' < "$DEST/object.json"

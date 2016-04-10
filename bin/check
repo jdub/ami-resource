@@ -12,4 +12,4 @@ jq '[.source.filters | to_entries | .[] | {"Name": .key, "Values": [(.value|sele
 aws ec2 describe-images \
   --filters file:///tmp/filters.json \
   --query 'sort_by(Images, &CreationDate)' \
-  jq -M'.[([.[] | .ImageId] | index("ami-1f30167c") // -2) + 1:] | [.[] | {ami: .ImageId}]'
+  | jq -M'.[([.[] | .ImageId] | index("ami-1f30167c") // -2) + 1:] | [.[] | {ami: .ImageId}]'
