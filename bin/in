@@ -12,4 +12,4 @@ aws ec2 describe-images --image-ids "$AMI" --query 'Images[0]' \
   | tee "$DEST/output.json" \
   | jq -r '.ImageId' > "$DEST/id"
 
-jq -M '.ImageId as $image | {Name, CreationDate, VirtualizationType, RootDeviceType} | to_entries | {metadata: map({name:.key, value:.value}), version: {ami: $image}}' < "$DEST/output.json"
+jq -M '.ImageId as $image | {Name, CreationDate, VirtualizationType, RootDeviceType} | to_entries | {metadata: map({name:.key, value:.value}), version: {ami: $image}}' < "$DEST/output.json" 2>&1
