@@ -1,5 +1,6 @@
 #!/bin/sh
-set -eu
+set -eu -o pipefail
+exec 3>&1 1>&2
 
 jq . < /dev/stdin > /tmp/input
 
@@ -14,4 +15,4 @@ jq '.source.filters | to_entries | map({"Name": .key, "Values": [(.value|select(
 aws ec2 describe-images \
   --filters file:///tmp/filters.json \
   --query 'sort_by(Images, &CreationDate)' \
-  | jq -M '.[([.[] | .ImageId] | index("'$AMI'") // -2) + 1:] | [.[] | {ami: .ImageId}]' 2>&1
+  | jq -M '.[([.[] | .ImageId] | index("'$AMI'") // -2) + 1:] | [.[] | {ami: .ImageId}]' >&3
