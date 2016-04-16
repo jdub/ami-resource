@@ -1,2 +1,4 @@
-#!/bin/sh -eu
+#!/bin/sh
+set -eu
+
 jq -M '{version}' < /dev/stdin

@@ -1,4 +1,6 @@
-#!/bin/sh -eu
+#!/bin/sh
+set -eu
+
 jq . < /dev/stdin > /tmp/input
 
 AMI=$(jq -r '.version.ami // empty' < /tmp/input)

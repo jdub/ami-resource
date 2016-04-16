@@ -1,4 +1,6 @@
-#!/bin/sh -eu
+#!/bin/sh
+set -eu
+
 jq . < /dev/stdin > /tmp/input
 
 DEST="$1"
