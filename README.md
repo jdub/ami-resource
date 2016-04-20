@@ -2,7 +2,7 @@
 
 A Concourse CI resource to check for new Amazon Machine Images (AMI).
 
-### Source Configuration
+## Source Configuration
 
 - `aws_access_key_id`: *Required.* Your AWS access key ID.
 
@@ -10,9 +10,39 @@ A Concourse CI resource to check for new Amazon Machine Images (AMI).
 
 - `region`: *Required.* The AWS region to search for AMIs.
 
-- `filters`: *Required.* A map of named filters to their values. See `aws ec2 describe-images help` under `--filters` for acceptable filters and values.
+- `filters`: *Required.* A map of named filters to their values. Check the AWS CLI [describe-images](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) documentation for a complete list of acceptable filters and values.
 
-### Example
+## Behaviour
+
+### `check`: Check for new AMIs
+
+Searches for AMIs that match the provided source filters, ordered by their creation date. The AMI ID serves as the resulting version.
+
+#### Parameters
+
+*None.*
+
+### `in`: Fetch the description of an AMI
+
+Places the following files in the destination:
+
+- `output.json`: The complete AMI description object in JSON format. Check the AWS CLI [describe-images](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html#examples) documentation for examples.
+
+- `id`: A plain text file containing the AMI ID, e.g. `ami-5731123e`
+
+- `packer.json`: The AMI ID in Packer `var-file` input format, typically for use with [packer-resource](https://github.com/jdub/packer-resource), e.g.
+
+  ```json
+  {"source_ami": "ami-5731123e"}
+  ```
+
+#### Parameters
+
+*None.*
+
+## Example
+
+This pipeline will check for a new Ubuntu 14.04 LTS AMI in the Sydney region every hour, triggering the next step of the build plan if it finds one.
 
 ```yaml
 resource_types:
