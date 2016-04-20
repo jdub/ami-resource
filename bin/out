@@ -2,4 +2,4 @@
 set -eu -o pipefail
 exec 3>&1 1>&2
 
-jq -M '{version}' < /dev/stdin
+jq '{version}' < /dev/stdin >&3
