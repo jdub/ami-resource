@@ -15,7 +15,7 @@ export AWS_DEFAULT_REGION=$(jq -r '.source.region // empty' /tmp/input)
 aws ec2 describe-images --image-ids "$AMI" --query 'Images[0]' \
   | tee "$DEST/output.json"
 
-jq '.ImageId' < "$DEST/output.json" > "$DEST/id"
+jq -r '.ImageId' < "$DEST/output.json" > "$DEST/id"
 
 jq '{source_ami: .ImageId}' < "$DEST/output.json" > "$DEST/packer.json"
 
