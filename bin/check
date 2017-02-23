@@ -2,7 +2,7 @@
 set -eu -o pipefail
 exec 3>&1 1>&2
 
-jq . < /dev/stdin > /tmp/input
+cat | jq . <&0 > /tmp/input
 
 AMI=$(jq -r '.version.ami // empty' /tmp/input)
 
