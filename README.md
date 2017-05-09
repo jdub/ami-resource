@@ -12,7 +12,7 @@ A Concourse CI resource to check for new Amazon Machine Images (AMI).
 
 - `filters`: *Required.* A map of named filters to their values. Check the AWS CLI [describe-images](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) documentation for a complete list of acceptable filters and values.
 
-If `aws_access_key_id` and `aws_secret_access_key` are both absent, AWS CLI will fallback to other authentication mechanisms. See [Configuration setting and precedence](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#config-settings-and-precedence)
+If `aws_access_key_id` and `aws_secret_access_key` are both absent, AWS CLI will fall back to other authentication mechanisms. See [Configuration setting and precedence](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#config-settings-and-precedence)
 
 ## Behaviour
 
