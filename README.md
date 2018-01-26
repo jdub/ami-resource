@@ -6,7 +6,7 @@ A Concourse CI resource to check for new Amazon Machine Images (AMI).
 
 If you want to assume a role and lookup an AMI in another account, use:
 
-- `role_id`: Your AWS role to assume. Make sure concourse can assume this role.
+- `role_id`: Your AWS role to assume. Make sure your concourse worker can assume this role.
 
 - `account_id`: The AWS account ID where you want to look up the AMI.
 
