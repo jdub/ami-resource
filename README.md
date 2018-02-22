@@ -8,11 +8,13 @@ A Concourse CI resource to check for new Amazon Machine Images (AMI).
 
 - `aws_secret_access_key`: Your AWS secret access key. 
 
+- `aws_session_token`: Your AWS session token (Optional).
+
 - `region`: *Required.* The AWS region to search for AMIs.
 
 - `filters`: *Required.* A map of named filters to their values. Check the AWS CLI [describe-images](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) documentation for a complete list of acceptable filters and values.
 
-If `aws_access_key_id` and `aws_secret_access_key` are both absent, AWS CLI will fall back to other authentication mechanisms. See [Configuration setting and precedence](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#config-settings-and-precedence)
+If `aws_access_key_id`, `aws_secret_access_key` and `aws_session_token` are all absent, AWS CLI will fall back to other authentication mechanisms. See [Configuration setting and precedence](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#config-settings-and-precedence)
 
 ## Behaviour
 
@@ -60,6 +62,7 @@ resources:
   source:
     aws_access_key_id: "..."
     aws_secret_access_key: "..."
+    aws_session_token: "..."
     region: ap-southeast-2
     filters:
       owner-id: "099720109477"
