@@ -6,7 +6,9 @@ A Concourse CI resource to check for new Amazon Machine Images (AMI).
 
 - `aws_access_key_id`: Your AWS access key ID.
 
-- `aws_secret_access_key`: Your AWS secret access key. 
+- `aws_secret_access_key`: Your AWS secret access key.
+
+- `aws_role_arn`: ARN of a AWS IAM role to assume.
 
 - `region`: *Required.* The AWS region to search for AMIs.
 
